@@ -13,7 +13,20 @@ st.set_page_config(
 
 st.title("Semantic Search AI App for BA Users")
 st.markdown("A Semantic Search App for ISOM 6670G.")
-st.image("Logo_USTBusinessSchool.svg", width=200, caption="My AI App Logo")
+st.markdown(
+    """
+    <div style="display: flex; align-items: center;">
+        <img src="Logo_USTBusinessSchool.svg" width="60" style="margin-right: 10px;">
+        <h2>Semantic Search AI App</h2>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown("---")  # 分割线
+
+query = st.text_input("Enter your question:")
+
 
 #ChatBox
 st.subheader("What is your question?")
