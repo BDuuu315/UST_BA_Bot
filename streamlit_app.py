@@ -14,7 +14,7 @@ st.set_page_config(
 
 st.title("Semantic Search AI App for BA Users")
 st.markdown("A Semantic Search App for ISOM 6670G.")
-logo_path = os.path.join(os.path.dirname(__file__), "Logo_USTBusinessSchool.png")
+logo_path = os.path.join(os.path.dirname(__file__), "Logo_USTBusinessSchool.svg")
 
 st.markdown(
     f"""
