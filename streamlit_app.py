@@ -15,9 +15,17 @@ st.title("Semantic Search AI App for BA Users")
 st.markdown("A Semantic Search App for ISOM 6670G.")
 st.markdown(
     """
-    <div style="display: flex; align-items: center;">
-        <img src="Logo_USTBusinessSchool.svg" width="60" style="margin-right: 10px;">
-        <h2>Semantic Search AI App</h2>
+    <style>
+    .logo-container {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        z-index: 100;
+    }
+    </style>
+
+    <div class="logo-container">
+        <img src="Logo_USTBusinessSchool.svg" width="80">
     </div>
     """,
     unsafe_allow_html=True
