@@ -3,36 +3,40 @@ import requests
 import json
 import os
 
-
 st.set_page_config(
     page_title="Semantic Search AI App for BA Users",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
 
-
-
-st.title("Semantic Search AI App for BA Users")
-st.markdown("A Semantic Search App for ISOM 6670G.")
+# --- 放置 logo，固定在浏览器左上角 ---
 st.markdown(
     """
     <style>
-    .logo { 
-        position: absolute;
-        top: 1px;
-        left: 1px;
-        z-index: 100; 
-    }
+        [data-testid="stAppViewContainer"] {
+            position: relative;
+        }
+
+        .top-left-logo {
+            position: fixed;
+            top: 10px;
+            left: 12px;
+            width: 80px;
+            z-index: 9999;
+        }
     </style>
+
+    <img src="Logo_USTBusinessSchool.png" class="top-left-logo">
     """,
     unsafe_allow_html=True
 )
-st.image("Logo_USTBusinessSchool.png", width=80, output_format="PNG")
 
+# --- 其他页面内容 ---
+st.title("Semantic Search AI App for BA Users")
+st.markdown("A Semantic Search App for ISOM 6670G.")
 
-#ChatBox
 st.subheader("What is your question?")
-
+user_query = st.text_input("Enter your question:", placeholder="e.g., Where is HKUST Business School?")
 user_query = st.text_input(
     label="Enter your question:",
     placeholder="e.g., Where is HKUST Business School",
