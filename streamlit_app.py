@@ -24,29 +24,6 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# --- 放置 logo，固定在浏览器左上角 ---
-st.markdown(
-    """
-    <style>
-        [data-testid="stAppViewContainer"] {
-            position: relative;
-        }
-
-        .top-left-logo {
-            position: fixed;
-            top: 10px;
-            left: 12px;
-            width: 80px;
-            z-index: 9999;
-        }
-    </style>
-
-    <img src="Logo_USTBusinessSchool.png" class="top-left-logo">
-    """,
-    unsafe_allow_html=True
-)
-
-# --- 其他页面内容 ---
 st.title("Semantic Search AI App for BA Users")
 st.markdown("A Semantic Search App for ISOM 6670G.")
 
