@@ -6,12 +6,14 @@ import json
 st.set_page_config(
     page_title="Semantic Search AI App for BA Users",
     layout="centered",
-    initial_sidebar_state="collapsed",
-    st.image("Logo_USTBusinessSchool.svg", width=200, caption="My AI App Logo")
+    initial_sidebar_state="collapsed"
 )
+
+
 
 st.title("Semantic Search AI App for BA Users")
 st.markdown("A Semantic Search App for ISOM 6670G.")
+st.image("Logo_USTBusinessSchool.svg", width=200, caption="My AI App Logo")
 
 #ChatBox
 st.subheader("What is your question?")
