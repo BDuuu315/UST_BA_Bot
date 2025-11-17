@@ -20,7 +20,7 @@ st.image("Logo_USTBusinessSchool.svg", width=120, output_format="SVG")
 
 st.set_page_config(
     page_title="Semantic Search AI App for BA Users",
-    layout="wide",
+    layout="centered",
     initial_sidebar_state="collapsed"
 )
 
