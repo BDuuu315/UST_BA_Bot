@@ -45,7 +45,7 @@ if st.button("Search"):
         # 构造 payload
         payload = {"query": user_query}
 
-        st.info("Sending your query to the backend for processing...")
+        st.info("Processing...")
 
         # ------------------------------
         # 4️⃣ 调用后端接口（可选真实API）
@@ -65,7 +65,7 @@ if st.button("Search"):
         # 5️⃣ 展示结果
         # ------------------------------
         if simulated_backend_output["status"] == "success":
-            st.success("✅ Query processed successfully!")
+            st.success("Query Processed Successfully!")
             st.subheader("💡 Semantic Result:")
             st.write(simulated_backend_output["semantic_answer"])
             st.caption(f"Confidence Score: {simulated_backend_output['confidence']}")
