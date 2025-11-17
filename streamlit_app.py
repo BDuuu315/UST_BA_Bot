@@ -38,7 +38,7 @@ user_query = st.text_input(
 # 3️⃣ 提交按钮
 # ------------------------------
 
-if st.button("🔎 Submit Query"):
+if st.button("Search"):
     if not user_query:
         st.warning("⚠️ Please enter a question before submitting.")
     else:
