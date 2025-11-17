@@ -13,19 +13,20 @@ st.set_page_config(
 
 st.title("Semantic Search AI App for BA Users")
 st.markdown("A Semantic Search App for ISOM 6670G.")
+logo_path = os.path.join(os.path.dirname(__file__), "Logo_USTBusinessSchool.png")
+
 st.markdown(
-    """
+    f"""
     <style>
-    .logo-container {
+    .logo-container {{
         position: absolute;
         top: 15px;
         left: 15px;
         z-index: 100;
-    }
+    }}
     </style>
-
     <div class="logo-container">
-        <img src="Logo_USTBusinessSchool.png" width="80">
+        <img src="file://{logo_path}" width="80">
     </div>
     """,
     unsafe_allow_html=True
