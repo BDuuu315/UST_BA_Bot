@@ -14,24 +14,20 @@ st.set_page_config(
 
 st.title("Semantic Search AI App for BA Users")
 st.markdown("A Semantic Search App for ISOM 6670G.")
-logo_path = os.path.join(os.path.dirname(__file__), "Logo_USTBusinessSchool.svg")
-
 st.markdown(
-    f"""
+    """
     <style>
-    .logo-container {{
+    .logo { 
         position: absolute;
         top: 15px;
         left: 15px;
-        z-index: 100;
-    }}
+        z-index: 100; 
+    }
     </style>
-    <div class="logo-container">
-        <img src="file://{logo_path}" width="80">
-    </div>
     """,
     unsafe_allow_html=True
 )
+st.image("Logo_USTBusinessSchool.png", width=80, output_format="PNG")
 
 
 #ChatBox
