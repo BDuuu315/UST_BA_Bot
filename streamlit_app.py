@@ -19,8 +19,8 @@ st.markdown(
     <style>
     .logo { 
         position: absolute;
-        top: 15px;
-        left: 15px;
+        top: 1px;
+        left: 1px;
         z-index: 100; 
     }
     </style>
