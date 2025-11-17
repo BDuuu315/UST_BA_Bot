@@ -25,7 +25,7 @@ st.markdown(
     </style>
 
     <div class="logo-container">
-        <img src="Logo_USTBusinessSchool.svg" width="80">
+        <img src="Logo_USTBusinessSchool.png" width="80">
     </div>
     """,
     unsafe_allow_html=True
