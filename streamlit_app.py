@@ -5,7 +5,7 @@ import json
 
 st.set_page_config(
     page_title="Semantic Search AI App for BA Users",
-    layout="centered",
+    layout="wide",
     initial_sidebar_state="collapsed"
 )
 
