@@ -2,27 +2,22 @@ import streamlit as st
 import requests
 import json
 
-# ------------------------------
-# 1️⃣ 页面基本设置
-# ------------------------------
+
 st.set_page_config(
-    page_title="Semantic Search AI App",
+    page_title="Semantic Search AI App for BA Users",
     layout="centered",
     initial_sidebar_state="collapsed"
 )
 
-st.title("🔍 Semantic Search AI App")
-st.markdown("This demo allows you to ask questions in **natural language** and get semantic search results.")
+st.title("Semantic Search AI App for BA Users")
+st.markdown("A Semantic Search App for ISOM 6670G.")
 
-# ------------------------------
-# 2️⃣ 用户输入区域
-# ------------------------------
-st.subheader("🗣️ Step 1: Type your question")
+#ChatBox
+st.subheader("What is your question?")
 
-# 文本输入框
 user_query = st.text_input(
     label="Enter your question:",
-    placeholder="e.g., What is semantic search?",
+    placeholder="e.g., Where is HKUST Business School",
     help="Type your natural language question here."
 )
 
