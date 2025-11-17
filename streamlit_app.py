@@ -3,6 +3,7 @@ import requests
 import json
 import os
 
+#First Page
 st.markdown(
     """
     <style>
@@ -34,27 +35,24 @@ user_query = st.text_input(
     help="Type your natural language question here."
 )
 
-# ------------------------------
-# 3️⃣ 提交按钮
-# ------------------------------
-
+# Button for Search
 if st.button("Search"):
     if not user_query:
         st.warning("⚠️ Please enter a question before submitting.")
     else:
-        # 构造 payload
+        #
         payload = {"query": user_query}
 
         st.info("Processing...")
 
         # ------------------------------
-        # 4️⃣ 调用后端接口（可选真实API）
+        # 调用
         # ------------------------------
         # ❗当有后端API时，放开下方注释：
         # response = requests.post("http://localhost:8000/api/search", json=payload)
         # result = response.json()
 
-        # （课堂作业演示时，可用模拟数据）
+        #
         simulated_backend_output = {
             "status": "success",
             "semantic_answer": "Semantic search works by comparing the meaning of your query with document embeddings.",
@@ -62,7 +60,7 @@ if st.button("Search"):
         }
 
         # ------------------------------
-        # 5️⃣ 展示结果
+        # Result
         # ------------------------------
         if simulated_backend_output["status"] == "success":
             st.success("Query Processed Successfully!")
@@ -72,16 +70,4 @@ if st.button("Search"):
         else:
             st.error("Backend returned an error. Please try again.")
 
-# ------------------------------
-# 6️⃣ 底部说明
-# ------------------------------
-st.markdown("""
----
-ℹ️ **About this module:**  
-This Streamlit front-end handles the *user instruction* part of the AI app:  
-- Collects user query  
-- Sends it to the backend API (semantic retrieval & LLM logic)  
-- Displays the processed answer  
 
-You can integrate it with your backend later to complete the RAG workflow.
-""")
