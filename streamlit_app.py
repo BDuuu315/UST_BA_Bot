@@ -16,7 +16,7 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-st.image("Logo_USTBusinessSchool.png", width=80, output_format="PNG")
+st.image("Logo_USTBusinessSchool.png", width=120, output_format="PNG")
 
 st.set_page_config(
     page_title="Semantic Search AI App for BA Users",
