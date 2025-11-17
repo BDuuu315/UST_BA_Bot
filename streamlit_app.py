@@ -3,6 +3,21 @@ import requests
 import json
 import os
 
+st.markdown(
+    """
+    <style>
+    .logo { 
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        z-index: 100; 
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+st.image("Logo_USTBusinessSchool.png", width=80, output_format="PNG")
+
 st.set_page_config(
     page_title="Semantic Search AI App for BA Users",
     layout="wide",
@@ -36,7 +51,6 @@ st.title("Semantic Search AI App for BA Users")
 st.markdown("A Semantic Search App for ISOM 6670G.")
 
 st.subheader("What is your question?")
-user_query = st.text_input("Enter your question:", placeholder="e.g., Where is HKUST Business School?")
 user_query = st.text_input(
     label="Enter your question:",
     placeholder="e.g., Where is HKUST Business School",
