@@ -1,56 +1,79 @@
 import streamlit as st
-from openai import OpenAI
+import requests
+import json
 
-# Show title and description.
-st.title("Business Chatbot for BA Users")
-st.write(
-    "This is a simple chatbot that uses OpenAI's GPT-3.5 model to generate responses. "
-    "To use this app, you need to provide an OpenAI API key, which you can get [here](https://platform.openai.com/account/api-keys). "
-    "You can also learn how to build this app step by step by [following our tutorial](https://docs.streamlit.io/develop/tutorials/llms/build-conversational-apps)."
+# ------------------------------
+# 1️⃣ 页面基本设置
+# ------------------------------
+st.set_page_config(
+    page_title="Semantic Search AI App",
+    layout="centered",
+    initial_sidebar_state="collapsed"
 )
 
-# Ask user for their OpenAI API key via `st.text_input`.
-# Alternatively, you can store the API key in `./.streamlit/secrets.toml` and access it
-# via `st.secrets`, see https://docs.streamlit.io/develop/concepts/connections/secrets-management
-openai_api_key = st.text_input("OpenAI API Key", type="password")
-if not openai_api_key:
-    st.info("Please add your OpenAI API key to continue.", icon="🗝️")
-else:
+st.title("🔍 Semantic Search AI App")
+st.markdown("This demo allows you to ask questions in **natural language** and get semantic search results.")
 
-    # Create an OpenAI client.
-    client = OpenAI(api_key=openai_api_key)
+# ------------------------------
+# 2️⃣ 用户输入区域
+# ------------------------------
+st.subheader("🗣️ Step 1: Type your question")
 
-    # Create a session state variable to store the chat messages. This ensures that the
-    # messages persist across reruns.
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
+# 文本输入框
+user_query = st.text_input(
+    label="Enter your question:",
+    placeholder="e.g., What is semantic search?",
+    help="Type your natural language question here."
+)
 
-    # Display the existing chat messages via `st.chat_message`.
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
+# ------------------------------
+# 3️⃣ 提交按钮
+# ------------------------------
 
-    # Create a chat input field to allow the user to enter a message. This will display
-    # automatically at the bottom of the page.
-    if prompt := st.chat_input("What is up?"):
+if st.button("🔎 Submit Query"):
+    if not user_query:
+        st.warning("⚠️ Please enter a question before submitting.")
+    else:
+        # 构造 payload
+        payload = {"query": user_query}
 
-        # Store and display the current prompt.
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"):
-            st.markdown(prompt)
+        st.info("Sending your query to the backend for processing...")
 
-        # Generate a response using the OpenAI API.
-        stream = client.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": m["role"], "content": m["content"]}
-                for m in st.session_state.messages
-            ],
-            stream=True,
-        )
+        # ------------------------------
+        # 4️⃣ 调用后端接口（可选真实API）
+        # ------------------------------
+        # ❗当有后端API时，放开下方注释：
+        # response = requests.post("http://localhost:8000/api/search", json=payload)
+        # result = response.json()
 
-        # Stream the response to the chat using `st.write_stream`, then store it in 
-        # session state.
-        with st.chat_message("assistant"):
-            response = st.write_stream(stream)
-        st.session_state.messages.append({"role": "assistant", "content": response})
+        # （课堂作业演示时，可用模拟数据）
+        simulated_backend_output = {
+            "status": "success",
+            "semantic_answer": "Semantic search works by comparing the meaning of your query with document embeddings.",
+            "confidence": 0.92
+        }
+
+        # ------------------------------
+        # 5️⃣ 展示结果
+        # ------------------------------
+        if simulated_backend_output["status"] == "success":
+            st.success("✅ Query processed successfully!")
+            st.subheader("💡 Semantic Result:")
+            st.write(simulated_backend_output["semantic_answer"])
+            st.caption(f"Confidence Score: {simulated_backend_output['confidence']}")
+        else:
+            st.error("Backend returned an error. Please try again.")
+
+# ------------------------------
+# 6️⃣ 底部说明
+# ------------------------------
+st.markdown("""
+---
+ℹ️ **About this module:**  
+This Streamlit front-end handles the *user instruction* part of the AI app:  
+- Collects user query  
+- Sends it to the backend API (semantic retrieval & LLM logic)  
+- Displays the processed answer  
+
+You can integrate it with your backend later to complete the RAG workflow.
+""")
