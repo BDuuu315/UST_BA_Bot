@@ -23,10 +23,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown("---")  # 分割线
-
-query = st.text_input("Enter your question:")
-
 
 #ChatBox
 st.subheader("What is your question?")
