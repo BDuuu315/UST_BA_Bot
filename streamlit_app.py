@@ -7,6 +7,7 @@ st.set_page_config(
     page_title="Semantic Search AI App for BA Users",
     layout="centered",
     initial_sidebar_state="collapsed"
+    st.image("Logo_USTBusinessSchool.svg", width=200, caption="My AI App Logo")
 )
 
 st.title("Semantic Search AI App for BA Users")
