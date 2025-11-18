@@ -179,7 +179,7 @@ def generate_contextual_ai_response(user_query: str, openai_client, top_k: int =
             "confidence": confidence,
             "sources": [m.metadata.get("source", f"Document {i+1}") for i, m in enumerate(matches)],
             "vector_dim": len(query_vec),
-            "vector_sample": query_vec[:10],
+            "vector_sample": query_vec[:1],
             "results": matches
         }
     except Exception as e:
