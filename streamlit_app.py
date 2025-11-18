@@ -139,7 +139,7 @@ Context:
 # ===============================================================
 # 🤖 核心函数：结合RAG生成智能回答
 # ===============================================================
-def generate_contextual_ai_response(user_query: str, openai_client, top_k: int = 10):
+def generate_contextual_ai_response(user_query: str, openai_client, top_k: int = 1):
     """ 执行：语义检索 → 构建Prompt → 调用Azure生成回答 """
     try:
         # ① 语义检索
