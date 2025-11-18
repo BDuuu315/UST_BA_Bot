@@ -116,16 +116,17 @@ def build_augmented_prompt(user_query, search_results):
     """根据检索到的上下文构造给 GPT 的增强提示词"""
     context = "\n\n".join([f"[Source {i+1}] {r['text']}" for i, r in enumerate(search_results)])
     augmented_prompt = f"""
-You are an assistant that answers questions based strictly on the given contextual documents.
+You are an assistant that answers questions based primarily on the given contextual documents.
+
+**Rules:**
+1. Use the context as your main reference.
+2. If the context is insufficient, you may provide a general answer using your own knowledge.
 
 **User Question:**
 {user_query}
 
 **Retrieved Context:**
 {context}
-
-If the context does not contain the necessary info, say:
-"The provided context does not contain the answer."
 """
     return augmented_prompt
 
