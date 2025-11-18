@@ -3,6 +3,7 @@ import random
 import numpy as np
 from openai import AzureOpenAI
 from pinecone import Pinecone
+from typing import Dict, Any
 
 # ========= 页面配置 =========
 st.set_page_config(
