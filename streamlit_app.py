@@ -129,25 +129,52 @@ Context:
     return augmented_prompt
 
 # ========= 生成AI回答 =========
-def generate_ai_response(query, client, search_results):
-    """基于RAG检索上下文生成最终回答"""
+def call_llm_generate_answer(
+        build_augmented_prompt: str,
+        model: str = "gpt-35-turbo",
+        temperature: float = 0.2,
+        max_tokens: int = 1024
+    ) -> Dict[str, Any]:
+
     try:
-        prompt = build_augmented_prompt(query, search_results)
-        completion = client.chat.completions.create(
-            model="gpt-35-turbo",
+        print(f"[{datetime.now().strftime('%H:%M:%S')}] Calling model: {model}")
+
+        response = openai_client.chat.completions.create(
+            model=model,
             messages=[
-                {"role": "system", "content": "You are a helpful assistant that uses context to answer questions accurately."},
-                {"role": "user", "content": prompt}
+                {"role": "user", "content": build_augmented_prompt}
             ],
-            temperature=0.3,
-            max_tokens=700
+            temperature=temperature,
+            max_tokens=max_tokens,
+            top_p=0.8,
+            presence_penalty=0.2,
+            frequency_penalty=0.2
         )
-        answer = completion.choices[0].message.content.strip()
-        confidence = round(random.uniform(0.85, 0.95), 2)
-        return answer, confidence
+
+        answer = response.choices[0].message.content.strip()
+        usage = response.usage
+
+        print(f"Token Usage: prompt={usage.prompt_tokens}, completion={usage.completion_tokens}")
+
+        return {
+            "answer": answer,
+            "model": model,
+            "usage": {
+                "prompt_tokens": usage.prompt_tokens,
+                "completion_tokens": usage.completion_tokens,
+                "total_tokens": usage.total_tokens
+            },
+            "timestamp": datetime.now().isoformat()
+        }
+
     except Exception as e:
-        st.error(f"生成回答出错: {e}")
-        return "Error generating GPT answer.", 0
+        error_msg = f"[ChatGPT Calling Failed] {str(e)}"
+        print(error_msg)
+        return {
+            "answer": "An error occurred while generating the response",
+            "error": str(e),
+            "timestamp": datetime.now().isoformat()
+        }
 
 # ========= Sidebar =========
 st.sidebar.title("Chat Sidebar")
