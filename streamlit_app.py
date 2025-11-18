@@ -75,7 +75,7 @@ def get_pinecone_client():
 # ===============================================================
 # 🧠 语义搜索函数 (Semantic Search)
 # ===============================================================
-def semantic_search(user_query: str, openai_client, top_k: int = 10):
+def semantic_search(user_query: str, openai_client, top_k: int = 1):
     """
     使用 Azure OpenAI embedding + Pinecone 向量检索，实现语义搜索
     """
