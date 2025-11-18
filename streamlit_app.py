@@ -63,7 +63,7 @@ def get_azure_client(api_key):
         azure_endpoint="https://hkust.azure-api.net"
     )
 
-PINECONE_API_KEY = "YOUR-PINECONE-API-KEY"
+PINECONE_API_KEY = "pcsk_JPQMS_zQZ9MfrD4aSEe8b69PoxsjcsvoSPEHpzgYGt4GPm8bv7ED95Wjy4u7vPmxSnjj"
 PINECONE_INDEX_NAME = "msba-lab-1537"
 PINECONE_NAMESPACE = "default"
 
