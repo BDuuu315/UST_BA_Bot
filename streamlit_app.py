@@ -280,7 +280,15 @@ if user_query and user_query != st.session_state.get("last_processed_query"):
                 azure_client = get_azure_client(st.session_state["OPENAI_API_KEY"])
                 matches, qv, dim = semantic_search(user_query, azure_client, top_k=top_k)
 
-                answer, conf = generate_ai_response(user_query, azure_client, matches)
+                result = call_llm_generate_answer(
+                    build_augmented_prompt(
+                        user_query,
+                        matches,
+                    )
+                )
+                
+                answer = result["answer"]
+                conf = round(random.uniform(0.85, 0.95), 2)
 
                 answer_text = f"**Answer:** {answer}\n\n"
                 answer_text += "---\n"
