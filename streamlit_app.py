@@ -149,8 +149,8 @@ def get_azure_client(api_key):
 
 # Pinecone API from Greta, self generated Database of movie describtions. //Frank
 PINECONE_API_KEY = "pcsk_6oHDXL_QyzEgtuEzHkTacffEiBW4gmGjPVfb4MAuz2Wy3M47yA5WR7XePPodEW1p6d6XyW"
-PINECONE_INDEX_NAME = "rapidapi-movie-index"
-PINECONE_NAMESPACE = "__default__"
+PINECONE_INDEX_NAME = "rapidapi-movie-index1"
+PINECONE_NAMESPACE = "movie_info_api"
 
 @st.cache_resource
 def get_pinecone_client():
